@@ -18,11 +18,6 @@ public class GameListService {
     private GameListRepository gameListRepository;
 
     @Transactional(readOnly = true)
-    public GameListDTO findById(Long id){
-        GameList result = gameListRepository.findById(id).get();
-        return new GameListDTO(result);
-    }
-    @Transactional(readOnly = true)
     public List<GameListDTO> findAll(){
         List<GameList> result = gameListRepository.findAll();
         return result.stream().map(GameListDTO::new).toList();
